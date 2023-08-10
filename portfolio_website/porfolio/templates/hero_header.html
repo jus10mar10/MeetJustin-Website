@@ -1,0 +1,43 @@
+<div class="position-relative text-center">
+    <div class="position-relative text-center bg-primary py-5">
+        <h1 class="display-1 text-white">
+            <span class="animated-text">Data Enthusiast</span>
+        </h1>
+    </div>
+</div>
+
+<style>
+    .animated-text {
+        display: inline-block;
+        animation: fade-up 1.5s ease-in-out forwards;
+        opacity: 0;
+    }
+
+    @keyframes fade-up {
+        from {
+            transform: translateX(-50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .animated-text span {
+        display: inline-block;
+        animation: fade-up-letter 1s ease-in-out forwards;
+        opacity: 0;
+    }
+
+    @keyframes fade-up-letter {
+        from {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+</style>
