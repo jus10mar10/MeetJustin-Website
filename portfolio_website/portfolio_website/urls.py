@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from porfolio import views as homeviews
+from update import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", homeviews.home, name="home"),
+    path("update_server/", views.update, name="update"),
 ]

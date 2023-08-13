@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\portfolio_website",
+    "\\portfolio_website\\porfolio",
+    "\\portfolio_website\\porfolio\\templates",
+    "\\portfolio_website\\portfolio_website"
   ],
+  "SelectedNode": "\\portfolio_website\\porfolio\\templates\\hero_header.html",
   "PreviewInSolutionExplorer": false
 }
