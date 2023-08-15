@@ -6,9 +6,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">About</a>
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link active" aria-current="page" href=/{{ current_page }}>{{ current_page }}</a>
+        {% for page in other_pages %}
+          <a class="nav-link" href=/{{ page }}>{{ page }}</a>
+        {% endfor %}
       </div>
     </div>
   </div>
