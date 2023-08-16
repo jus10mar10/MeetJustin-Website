@@ -22,7 +22,7 @@ def Home(request):
 def Portfolio(request):
     current_page = 'Portfolio'
     other_pages = [page for page in pages if page != current_page]
-    return render(request, 'coming_soon.html', {"current_page":current_page, "other_pages":other_pages})
+    return render(request, 'detail.html', {"current_page":current_page, "other_pages":other_pages})
 
 def Resources(request):
     current_page = 'Resources'
