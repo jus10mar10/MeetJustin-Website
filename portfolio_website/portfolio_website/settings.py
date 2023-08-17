@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "portfolio",
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,14 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 STATIC_ROOT = BASE_DIR / "static"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',  # Use 'full' for a comprehensive toolbar
+    },
+}
+
+# settings.py
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
