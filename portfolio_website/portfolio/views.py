@@ -12,7 +12,7 @@ def Home(request):
                   "Django Developer",
                   "Power Apps Creator",
                   "SQL Proficent",
-                  "HTML and CSS Aware",
+                  "HTML and CSS",
                   "Excel Expert",
                   "Tableau User",]
     }
