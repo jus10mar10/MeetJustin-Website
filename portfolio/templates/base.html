@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ current_page }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/573c393d40.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block style %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-xxl navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Justin's Portfolio</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href=/{{ current_page }}>{{ current_page }}</a>
+              {% for page in other_pages %}
+                <a class="nav-link" href=/{{ page }}>{{ page }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    {% block content %}{% endblock %}
+    <footer class="bg-light text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+      
+            <!-- Linkedin -->
+            <a
+              class="btn text-white btn-floating m-1"
+              style="background-color: #0082ca;"
+              href="https://www.linkedin.com/in/justin-martin-40a680140"
+              role="button"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <!-- Github -->
+            <a
+              class="btn text-white btn-floating m-1"
+              style="background-color: #333333;"
+              href="https://github.com/jus10mar10"
+              role="button"
+              ><i class="fab fa-github"></i
+            ></a>
+            <!-- YouTube-->
+            <a
+              class="btn text-white btn-floating m-1"
+              style="background-color: #ff0000;"
+              href="https://www.youtube.com/channel/UCsKO-jXz4TKbWeMUN98jrOw"
+              role="button"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          Powered by 🐍
+        </div>
+        <!-- Copyright -->
+      </footer>
+      {% block script %}{% endblock %}
+</body>
+</html>

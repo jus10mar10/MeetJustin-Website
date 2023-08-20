@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block style %}
+<style>
+    .profile-image {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .animated-text {
+        display: inline-block;
+        animation: fade-up 1.0s ease-in-out forwards;
+        opacity: 0;
+    }
+    
+    @keyframes fade-up {
+        0% {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="position-relative text-center">
+    <div class="position-relative text-center bg-primary py-5">
+        <h1 class="display-1 text-white" style="line-height: 5.53;">
+            <span id="animText"></span>
+        </h1>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row align-items-center">
+        <!-- Profile Image -->
+        <div class="col-md-4 text-center mb-4 mb-md-0">
+            <img src="https://media.licdn.com/dms/image/D4E03AQEiyPx7TQqZQg/profile-displayphoto-shrink_400_400/0/1689624121688?e=1697673600&v=beta&t=RHCk0GO046g96nkNIHUo-YdF1-KBMZnlOI1VN-8poSk" class="profile-image img-fluid rounded-circle mb-3" alt="profile picture">
+        </div>
+        
+        <!-- About Text -->
+        <div class="col-md-8">
+            <h2 class="mb-3">About Me</h2>
+            <p class="mb-4">
+                Hello! I'm Justin Martin, a dedicated and passionate data enthusiast with experience in Python, SQL, Finance, Excel, Power Apps, and more! My journey started at The University of Tennessee: Chattanooga and has led me to work on various impactful projects across multiple domains. I believe in data-driven decisions and strive to turn complex data into actionable insights. This website is both a portfolio and a blog, so feel free to look around and reach out if you have any questions!
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    const texts = [{% for text in texts %}"{{ text }}"{% if not forloop.last %}, {% endif %}{% endfor %}];
+    let currentTextIndex = 0;
+    const animTextElement = document.getElementById("animText");
+
+    function changeText() {
+        // Reset animation
+        animTextElement.classList.remove('animated-text');
+        void animTextElement.offsetWidth; // Trick to force a reflow
+
+        animTextElement.innerHTML = texts[currentTextIndex];
+        animTextElement.classList.add('animated-text');
+
+        currentTextIndex = (currentTextIndex + 1) % texts.length; // Loop through texts
+    }
+
+    setInterval(changeText, 1500); // Change text every 1.5 seconds
+    changeText(); // Initial call to set the first text
+</script>
+{% endblock %}
