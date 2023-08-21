@@ -4,31 +4,49 @@
 
 {% block style %}
 <style>
-.blog-post-title {
-    margin-top: 50px;
-}
-.blog-post-meta {
-    margin-bottom: 50px;
-    color: gray;
-}
-.blog-post-content {
-    margin-bottom: 50px;
-    margin-top: 50px;
-}
+    /* Generic styles */
+    .blog-post-title {
+        margin-top: 50px;
+    }
+    .blog-post-meta {
+        margin-bottom: 50px;
+        color: gray;
+    }
+    .blog-post-content {
+        margin-bottom: 50px;
+        overflow-x: auto; /* Handle horizontal overflow */
+    }
+    .blog-image {
+        max-height: 400px;
+        max-width: 95%; /* Ensure images don't exceed their container's width */
+    }
+    .container-xs {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    
+    /* Responsive tables */
+    .blog-post-content table {
+        width: 100%;
+        overflow: auto;
+    }
 
-.blog-image {
-    max-height: 400px;
-}
+    /* Code blocks, if they exist */
+    .blog-post-content pre {
+        overflow-x: auto;
+    }
 
-.container-xs {
-    max-width: 800px; /* Set this value to whatever width you desire */
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: 15px;
-    padding-left: 15px;
-}
-
+    /* Mobile-specific styles */
+    @media (max-width: 768px) {
+        .blog-post-content {
+            padding: 0 !important;
+        }
+        .body {
+            overflow: hidden;
+            width: 100%;
+        }
+    }
 
 </style>
 
@@ -42,16 +60,17 @@
     </div>
     
     <div class="blog-post-meta">
-        <p>Example Date</p>
+        <p>{{project.date}}</p>
     </div>
     
-    <div> 
-        <img class = "img-fluid blog-image" src="{{project.image.url }}"></img>
+    <div class="thumbnail-image"> 
+        <img class = "img-fluid blog-image mx-auto d-block" src="{{project.image.url }}"></img>
     </div>
 
+    <hr></hr>
     <div class="blog-post-content">
         <p>{{ project.content|safe }}</p>
-    </div>  
+    </div>
 
 </div>
 {% endblock %}
