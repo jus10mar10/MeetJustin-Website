@@ -5,5 +5,5 @@ class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     content = RichTextField()
-    image = models.ImageField(upload_to='media/')
+    image = models.ImageField(upload_to='thumbnails/')
     # Add other fields like URL, date, etc.

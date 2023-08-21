@@ -24,7 +24,7 @@ def Portfolio(request):
     current_page = 'Portfolio'
     other_pages = [page for page in pages if page != current_page]
     projects = get_list_or_404(Project)
-    return render(request, 'detail.html', {"current_page":current_page, "other_pages":other_pages, "projects":projects})
+    return render(request, 'portfolio.html', {"current_page":current_page, "other_pages":other_pages, "projects":projects})
 
 def Resources(request):
     current_page = 'Resources'
@@ -32,5 +32,7 @@ def Resources(request):
     return render(request, 'coming_soon.html', {"current_page":current_page, "other_pages":other_pages})
 
 def project_detail(request, project_id):
-    project = get_list_or_404(Project, pk=project_id)
-    return render(request, 'portfolio/project_detail.html', {'project': project})
+    current_page = 'Portfolio'
+    other_pages = [page for page in pages if page != current_page]
+    project = get_object_or_404(Project, pk=project_id)
+    return render(request, 'detail.html', {"current_page":current_page, "other_pages":other_pages, "project":project})
