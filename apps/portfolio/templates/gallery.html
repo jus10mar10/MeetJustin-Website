@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Portfolio{% endblock %}
+{% block title %}{{current_page}}{% endblock %}
 
 {% block style %}
 <style>
@@ -19,8 +19,8 @@
   <section class="py-5 text-center container">
     <div class="row py-lg-4">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Portfolio</h1>
-        <p class="lead text-muted">Explore my portfolio to see the data-driven projects I've tackled and the solutions I've crafted.</p>
+        <h1 class="fw-light">{{current_page}}</h1>
+        <p class="lead text-muted">{{page_description}}</p>
       </div>
     </div>
   </section>
