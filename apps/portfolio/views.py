@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
-from .models import Project
-from .models import Resource
+from .models import Post
+from django.views import View
 
-pages = ['Home', 'Portfolio', 'Resources']
+pages = ['Home', 'Portfolio', 'Resource']
 
 def Home(request):
     context = {
@@ -12,7 +12,7 @@ def Home(request):
                   "Finance Fanatic",
                   "Django Developer",
                   "Power Apps Creator",
-                  "SQL Proficent",
+                  "SQL User",
                   "HTML and CSS",
                   "Excel Expert",
                   "Tableau User",]
@@ -21,22 +21,35 @@ def Home(request):
     other_pages = [page for page in pages if page != current_page]
     return render(request, 'home.html', {"texts":context["texts"], "current_page":current_page, "other_pages":other_pages})
 
-def Portfolio(request):
+def post_detail(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    current_page = post.type.capitalize()
+    other_pages = [page for page in pages if page != current_page]
+    return render(request, 'detail.html', {"current_page":current_page, "other_pages":other_pages, "post":post})
+
+class BaseGalleryView(View):
+    current_page = None
+    page_description = None
+    post_type = None
+
+    def get(self, request, *args, **kwargs):
+        other_pages = [page for page in pages if page != self.current_page]
+        posts = get_list_or_404(Post, type=self.post_type)
+        context = {
+            "current_page": self.current_page,
+            "other_pages": other_pages,
+            "posts": posts,
+            "page_description": self.page_description
+        }
+        return render(request, 'gallery.html', context)
+    
+class Portfolio(BaseGalleryView):
     current_page = 'Portfolio'
     page_description = "Explore my portfolio to see the data-driven projects I've tackled and the solutions I've crafted."
-    other_pages = [page for page in pages if page != current_page]
-    projects = get_list_or_404(Project)
-    return render(request, 'gallery.html', {"current_page":current_page, "other_pages":other_pages, "projects":projects, "page_description":page_description})
+    post_type = 'portfolio'
 
-def Resources(request):
-    current_page = 'Resources'
+
+class Resource(BaseGalleryView):
+    current_page = 'Resource'
     page_description = "Some helpful resources to help you on your tech journey."
-    other_pages = [page for page in pages if page != current_page]
-    projects = get_list_or_404(Resource)
-    return render(request, 'resource.html', {"current_page":current_page, "other_pages":other_pages, "projects":projects})
-
-def project_detail(request, project_id):
-    current_page = 'Portfolio'
-    other_pages = [page for page in pages if page != current_page]
-    project = get_object_or_404(Project, pk=project_id)
-    return render(request, 'detail.html', {"current_page":current_page, "other_pages":other_pages, "project":project})
+    post_type = 'resource'

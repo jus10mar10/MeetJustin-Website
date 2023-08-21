@@ -28,18 +28,18 @@
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for project in projects %}
+        {% for post in posts %}
         <div class="col">
           <div class="card shadow-sm" style="height: 400px;">
-            <div class="card-image" style="background-image: url({{project.image.url}});"></div>
+            <div class="card-image" style="background-image: url({{post.image.url}});"></div>
             <div class="card-body">
-              <p class="card-text"><strong>{{ project.title }}</strong></p>
-              <p class="card-text" style="height: 80px; overflow: auto;">{{ project.description|truncatechars:145 }}</p>
+              <p class="card-text"><strong>{{ post.title }}</strong></p>
+              <p class="card-text" style="height: 80px; overflow: auto;">{{ post.description|truncatechars:145 }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='{% url 'project_detail' project.id %}'">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='{% url 'post_detail' post.id %}'">View</button>
                 </div>
-                <small class="text-muted">{{project.date}}</small>
+                <small class="text-muted">{{post.date}}</small>
               </div>
             </div>
           </div>
