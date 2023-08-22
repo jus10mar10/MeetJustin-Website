@@ -19,12 +19,16 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div class="navbar-nav me-auto">
               <a class="nav-link active" aria-current="page" href=/{{ current_page }}>{{ current_page }}</a>
               {% for page in other_pages %}
                 <a class="nav-link" href=/{{ page }}>{{ page }}</a>
               {% endfor %}
             </div>
+            <form class="d-flex" action="{% url 'search_view' %}" method="get">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
           </div>
         </div>
       </nav>

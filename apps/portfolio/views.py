@@ -53,3 +53,10 @@ class Resource(BaseGalleryView):
     current_page = 'Resource'
     page_description = "Some helpful resources to help you on your tech journey."
     post_type = 'resource'
+
+def search_view(request):
+    query = request.GET.get('q', '')
+    posts = Post.objects.filter(title__contains=query)
+    current_page = 'Search🔍'
+    other_pages = [page for page in pages if page != current_page]
+    return render(request, 'gallery.html', {'posts': posts, 'current_page': current_page, 'other_pages': other_pages})
