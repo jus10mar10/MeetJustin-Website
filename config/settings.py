@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "apps.portfolio",
     'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -138,6 +139,38 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'full',  # Use 'full' for a comprehensive toolbar
     },
 }
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+# settings.py
+
+# Slugify filenames
+CKEDITOR_UPLOAD_SLUGIFY_FILENAME = True  # False if you want to disable
+
+# Restrict access to uploaded images to the uploading user
+CKEDITOR_RESTRICT_BY_USER = False  # Set to True if you want to enable
+
+# Show directories on the “Browse Server” page
+CKEDITOR_BROWSE_SHOW_DIRS = False  # Set to True if you want to enable
+
+# Bucket uploaded files by date
+CKEDITOR_RESTRICT_BY_DATE = False  # Set to True if you want to enable
+
+# Custom storage backend
+# CKEDITOR_STORAGE_BACKEND = 'your_custom_backend'
+
+# Thumbnails
+CKEDITOR_IMAGE_BACKEND = 'ckeditor_uploader.backends.PillowBackend'
+
+# Thumbnail size
+CKEDITOR_THUMBNAIL_SIZE = (75, 75)
+
+# Force JPEG compression
+CKEDITOR_FORCE_JPEG_COMPRESSION = False  # Set to True if you want to enable
+
+# Image Quality
+CKEDITOR_IMAGE_QUALITY = 75  # Set between 1 and 95
+
 
 # settings.py
 MEDIA_URL = '/media/'
