@@ -8,11 +8,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/573c393d40.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% block style %}{% endblock %}
+    <style>
+
+      .sticky-navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;  /* Optional: but helpful if you have other sticky/fixed elements */
+      }
+
+      {% block style %}{% endblock %}
+    </style>
+    
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-xxl navbar-light bg-light">
+    <nav class="navbar navbar-expand-xxl navbar-light bg-light sticky-navbar">
       <div class="container-fluid">
           <a class="navbar-brand" href="#">Meet Justin.Tech</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
