@@ -48,6 +48,29 @@
         }
     }
 
+        /* No indentation for h1 */
+    #tocList .h1 {
+        margin-left: 0;
+    }
+
+    /* Indent h2 elements */
+    #tocList .h2 {
+        margin-left: 1em;
+    }
+
+    /* Indent h3 elements */
+    #tocList .h3 {
+        margin-left: 2em;
+    }
+
+    /* Indent h4 elements */
+    #tocList .h4 {
+        margin-left: 3em;
+    }
+
+/* ... Continue for h5, h6, etc. */
+
+
 </style>
 
 {% endblock %}
@@ -87,6 +110,9 @@
 
                                 link.href = `#${id}`;
                                 link.innerText = header.innerText;
+                                
+                                // Add a class based on the header type (e.g., h1, h2, h3, etc.)
+                                listItem.className = header.tagName.toLowerCase();
 
                                 listItem.appendChild(link);
                                 tocList.appendChild(listItem);
