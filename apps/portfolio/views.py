@@ -57,6 +57,7 @@ class Resource(BaseGalleryView):
 def search_view(request):
     query = request.GET.get('q', '')
     posts = Post.objects.filter(title__contains=query, is_published=True)
-    current_page = 'Search🔍'
+    current_page = 'Search'
+    search = '<span id="search-icon">🔍</span>'
     other_pages = [page for page in pages if page != current_page]
-    return render(request, 'gallery.html', {'posts': posts, 'current_page': current_page, 'other_pages': other_pages})
+    return render(request, 'gallery.html', {'posts': posts, 'current_page': current_page, 'other_pages': other_pages, 'search': search})
