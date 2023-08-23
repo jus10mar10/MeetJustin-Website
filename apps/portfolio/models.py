@@ -9,7 +9,7 @@ class Post(models.Model):
             ('portfolio', 'Portfolio'),
             ('resource', 'Resource'),
         ]
-    date = models.DateField(default=date.today)
+    date = models.DateField(default=None)
     title = models.CharField(max_length=35)
     description = models.TextField(max_length=140)
     content = RichTextUploadingField()
