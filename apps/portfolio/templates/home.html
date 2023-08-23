@@ -25,29 +25,41 @@
             opacity: 1;
         }
     }
+
+    @media (max-width: 768px) {
+        .arrow-container {
+            display: none;
+        }
+    }
+    
 {% endblock %}
 
 {% block content %}
 <div class="position-relative text-center">
     <div class="position-relative text-center bg-primary py-5">
-        <h1 class="display-1 text-white" style="line-height: 5.53;">
+        <h1 class="display-1 text-white" style="line-height: 8;">
             <span id="animText"></span>
         </h1>
+        <a href="#about-me">
+        <div class="arrow-container">
+            <i class="fas fa-arrow-down text-white"></i>
+        </div>  
+        </a>
     </div>
 </div>
 
 <div class="container py-5">
     <div class="row align-items-center">
-        <!-- Profile Image -->
+        
         <div class="col-md-4 text-center mb-4 mb-md-0">
             <img src="https://media.licdn.com/dms/image/D4E03AQEiyPx7TQqZQg/profile-displayphoto-shrink_400_400/0/1689624121688?e=1697673600&v=beta&t=RHCk0GO046g96nkNIHUo-YdF1-KBMZnlOI1VN-8poSk" class="profile-image img-fluid rounded-circle mb-3" alt="profile picture">
         </div>
         
-        <!-- About Text -->
+         
         <div class="col-md-8">
-            <h2 class="mb-3">About Me</h2>
+            <h2 class="mb-3" id="about-me">Meet Justin Martin</h2>
             <p class="mb-4">
-                Hello! I'm Justin Martin, a dedicated data enthusiast with a background in Python, SQL, Finance, Excel, Power Apps, and more. 
+                Hello! I'm a dedicated data enthusiast with a background in Python, SQL, Finance, Excel, Power Apps, and more. 
                 My academic journey began at The University of Tennessee: Chattanooga, where I earned an undergraduate degree in Finance. 
                 Now, I'm advancing my data science expertise at Georgia Tech through the Online Master of Science in Analytics (OMSA) program. 
                 I believe in making data-driven decisions, and solving problems. 
@@ -55,7 +67,7 @@
             </p>
         </div>
     </div>
-</div>
+</div> 
 {% endblock %}
 
 {% block script %}
