@@ -34,7 +34,7 @@ class BaseGalleryView(View):
 
     def get(self, request, *args, **kwargs):
         other_pages = [page for page in pages if page != self.current_page]
-        posts = get_list_or_404(Post, type=self.post_type)
+        posts = Post.objects.filter(type=self.post_type, is_published=True)
         context = {
             "current_page": self.current_page,
             "other_pages": other_pages,
@@ -56,7 +56,7 @@ class Resource(BaseGalleryView):
 
 def search_view(request):
     query = request.GET.get('q', '')
-    posts = Post.objects.filter(title__contains=query)
+    posts = Post.objects.filter(title__contains=query, is_published=True)
     current_page = 'Search🔍'
     other_pages = [page for page in pages if page != current_page]
     return render(request, 'gallery.html', {'posts': posts, 'current_page': current_page, 'other_pages': other_pages})
