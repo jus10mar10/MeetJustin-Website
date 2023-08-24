@@ -3,6 +3,7 @@ from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from datetime import date
 
+
 class Post(models.Model):
     class Choices(models.Model):
         TYPE_CHOICES = [
