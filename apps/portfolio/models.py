@@ -7,7 +7,7 @@ class Post(models.Model):
     class Choices(models.Model):
         TYPE_CHOICES = [
             ('portfolio', 'Portfolio'),
-            ('resource', 'Resource'),
+            ('blog', 'Blog'),
         ]
     date = models.DateField(default=None)
     title = models.CharField(max_length=35)
