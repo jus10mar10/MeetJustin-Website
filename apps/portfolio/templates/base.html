@@ -30,7 +30,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav me-auto">
-              <a class="nav-link {% if request.path == '/Home' %}active{% endif %}" href="/Home">Home</a>
+              <a class="nav-link {% if request.path == '/Home' %}active{% endif %}{% if request.path == '' %}active{% endif %}" href="/Home">Home</a>
               <a class="nav-link {% if request.path == '/Portfolio/' %}active{% endif %}" href="/Portfolio">Portfolio</a>
               <a class="nav-link {% if request.path == '/Blog/' %}active{% endif %}" href="/Blog">Blog</a>
             </div>            
