@@ -46,7 +46,7 @@ class Portfolio(BaseGalleryView):
 class Blog(BaseGalleryView):
     current_page = 'Blog'
     page_description = "Blog containing my thoughts on data, finance, and technology."
-    post_type = 'resource'
+    post_type = 'blog'
 
 def search_view(request):
     query = request.GET.get('q', '')
