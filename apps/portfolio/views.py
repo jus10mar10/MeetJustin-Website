@@ -9,8 +9,7 @@ def Home(request):
                   "Chattanoogan",
                   "Finance Fanatic",
                   "Django Developer",
-                  "Power Apps Creator",
-                  "SQL User",
+                  "SQL",
                   "HTML and CSS",
                   "Excel Expert",
                   "Tableau User",]
