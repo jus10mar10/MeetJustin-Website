@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from .models import Post
 from django.views import View
+from django.conf import settings
+from django.shortcuts import redirect
 
 def Home(request):
     context = {
@@ -53,3 +55,6 @@ def search_view(request):
     current_page = 'Search'
     search = '<span id="search-icon">🔍</span>'
     return render(request, 'gallery.html', {'posts': posts, 'current_page': current_page, 'search': search})
+
+def error_404_view(request, exception):
+    return render(request, '404.html')
