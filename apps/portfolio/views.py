@@ -28,7 +28,7 @@ class BaseGalleryView(View):
     post_type = None
 
     def get(self, request, *args, **kwargs):
-        posts = Post.objects.filter(type=self.post_type, is_published=True).order_by('date')
+        posts = Post.objects.filter(type=self.post_type, is_published=True).order_by('-date')
         context = {
             "current_page": self.current_page,
             "posts": posts,
@@ -49,7 +49,7 @@ class Blog(BaseGalleryView):
 
 def search_view(request):
     query = request.GET.get('q', '')
-    posts = Post.objects.filter(title__contains=query, content__contains=query, is_published=True).order_by('date')
+    posts = Post.objects.filter(title__contains=query, content__contains=query, is_published=True).order_by('-date')
     current_page = 'Search'
     search = '<span id="search-icon">🔍</span>'
     return render(request, 'gallery.html', {'posts': posts, 'current_page': current_page, 'search': search})
