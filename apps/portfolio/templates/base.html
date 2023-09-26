@@ -32,7 +32,7 @@
             <div class="navbar-nav me-auto">
               <a class="nav-link {% if request.path == '/Home' %}active{% endif %}{% if request.path == '/' %}active{% endif %}" href="/Home">Home</a>
               <a class="nav-link {% if request.path == '/Portfolio/' %}active{% endif %}" href="/Portfolio/">Portfolio</a>
-              <a class="nav-link {% if request.path == '/Blog/' %}active{% endif %}" href="/Blog">Blog</a>
+              <a class="nav-link {% if request.path == '/Blog/' %}active{% endif %}" href="/Blog/">Blog</a>
             </div>            
             <form class="d-flex" action="{% url 'search_view' %}" method="get">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
