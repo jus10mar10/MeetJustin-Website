@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 50px;
+}
+
+.robot {
+    width: 150px;
+    height: 150px;
+    background-color: #ccc;
+    position: relative;
+    margin: auto;
+}
+
+.eye {
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+    position: absolute;
+    top: 40px;
+    border-radius: 50%;
+}
+
+.eye.left {
+    left: 40px;
+}
+
+.eye.right {
+    right: 40px;
+}
+
+.mouth {
+    width: 60px;
+    height: 10px;
+    background-color: red;
+    position: absolute;
+    bottom: 20px;
+    left: 45px;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="robot">
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="mouth"></div>
+        </div>
+        <h1>Oops! <span>404</span></h1>
+        <p>It looks like you've found a missing page, or maybe I misplaced it. Either way, we're lost!</p>
+        <a href="/">Go Home</a>
+    </div>
+</body>
+</html>
