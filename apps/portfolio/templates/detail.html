@@ -140,7 +140,7 @@
 <section class="py-5 text-center container">
     <div class="row py-lg-4">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">More {{current_page}} Posts!</h1>
+        <h1 class="fw-light">Recent {{current_page}} Posts</h1>
         <p class="lead text-muted">{{page_description}}</p>
       </div>
     </div>
@@ -149,7 +149,8 @@
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for post in posts %}
+        {% for post in posts %} # change to only include 6 posts
+        {% if forloop.counter > 1 %}
         <div class="col">
           <div class="card shadow-sm" style="height: 400px;">
             <div class="card-image" style="background-image: url({{post.image.url}});"></div>
@@ -165,6 +166,7 @@
             </div>
           </div>
         </div>
+        {% endif %}
         {% endfor %}
       </div>
     </div>
