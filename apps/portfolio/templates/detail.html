@@ -129,4 +129,38 @@
     </div>
 
 </div>
+
+<section class="py-5 text-center container">
+    <div class="row py-lg-4">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">More {{current_page}} Posts!</h1>
+        <p class="lead text-muted">{{page_description}}</p>
+      </div>
+    </div>
+  </section>
+  
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for post in posts %}
+        <div class="col">
+          <div class="card shadow-sm" style="height: 400px;">
+            <div class="card-image" style="background-image: url({{post.image.url}});"></div>
+            <div class="card-body">
+              <p class="card-text"><strong>{{ post.title }}</strong></p>
+              <p class="card-text" style="height: 80px; overflow: auto;">{{ post.description|truncatechars:145 }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='{% url 'post_detail' post.id %}'">View</button>
+                </div>
+                <small class="text-muted">{{post.date}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
 {% endblock %}

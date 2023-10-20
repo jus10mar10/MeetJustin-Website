@@ -22,7 +22,10 @@ def Home(request):
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     current_page = post.type.capitalize()
-    return render(request, 'detail.html', {"current_page":current_page, "post":post})
+    posts = Post.objects.filter(type=post.type, is_published=True).order_by('-date') 
+    #remove current post from posts
+    posts = [p for p in posts if p.id != post_id]
+    return render(request, 'detail.html', {"current_page":current_page, "post":post, "posts":posts})
 
 class BaseGalleryView(View):
     current_page = None
