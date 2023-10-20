@@ -136,17 +136,18 @@
     </div>
 
 </div>
+<div class="bg-light">
+    <section class="py-5 text-center container">
+        <div class="row py-lg-4">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Recent {{current_page}} Posts</h1>
+            <p class="lead text-muted">{{page_description}}</p>
+        </div>
+        </div>
+    </section>
+</div>
 
-<section class="py-5 text-center container">
-    <div class="row py-lg-4">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Recent {{current_page}} Posts</h1>
-        <p class="lead text-muted">{{page_description}}</p>
-      </div>
-    </div>
-  </section>
-  
-  <div class="album py-5 bg-light">
+  <div class="album py-5">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         {% for post in posts %}
