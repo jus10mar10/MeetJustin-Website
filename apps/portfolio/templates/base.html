@@ -35,10 +35,20 @@
               <a class="nav-link {% if request.path == '/Blog/' %}active{% endif %}" href="/Blog/">Blog</a>
               <a class="nav-link {% if request.path == '/Contact/' %}active{% endif %}" href="/resources/">Resources</a>
             </div>
-                <a class="nav-link {% if request.path == '/Home/' %}active{% endif %} text-primary" href="/signup/">Signup</a>
-                <a class="nav-link {% if request.path == '/Home/' %}active{% endif %} text-success" href="/signin/">Signin</a>
-                <a class="nav-link {% if request.path == '/Home/' %}active{% endif %} text-danger" href="/">Signout</a>
-                <a class="nav-link {% if request.path == '/Home/' %}active{% endif %} text-warning" href="/account/">Account</a>
+            {% if not user.is_authenticated %}
+              <!-- Show these links if the user is NOT signed in -->
+              <a class="btn btn-outline-primary me-2 my-1 nav-link {% if request.path == '/Home/' %}active{% endif %} text-primary" href="/signup/">Sign up</a>
+              <a class="btn btn-outline-success me-2 my-1 nav-link {% if request.path == '/Home/' %}active{% endif %} text-success" href="/signin/">Sign in</a>
+            {% else %}
+              <!-- Show these links if the user IS signed in -->
+              <a class="btn btn-outline-danger me-2 my-1 nav-link {% if request.path == '/Home/' %}active{% endif %} text-danger" href="/logout/">Sign out</a>
+              <a class="btn btn-outline-success me-2 my-1 nav-link {% if request.path == '/Home/' %}active{% endif %} text-success" href="/account/">{{ user.username }}</a>
+              <!-- Show these links if the user IS staff or superuser-->
+              {% if user.is_staff or user.is_superuser %}
+                <a type="button" class="btn btn-secondary text-white me-2 my-2 nav-link {% if request.path == '/Home/' %}active{% endif %} " href="/admin/">Admin</a>
+              {% endif %}
+              
+            {% endif %}
                 <form class="d-flex" action="{% url 'search_view' %}" method="get">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
                   <button class="btn btn-outline-success" type="submit">Search</button>

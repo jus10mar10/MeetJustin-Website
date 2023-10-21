@@ -27,47 +27,31 @@
         <div class="col-lg-6 mb-5 mb-lg-0">
           <div class="card">
             <div class="card-body py-5 px-md-5">
-              <form>
-                <!-- 2 column grid layout with text inputs for the first and last names -->
+              <form method="POST">
+                {% csrf_token %}
+                <!-- Django form fields -->
                 <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1" class="form-control" />
-                      <label class="form-label" for="form3Example1">First name</label>
+                  {% for field in form %}
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <legend class="col-form-label">{{ field.label }}</legend>
+                        {{ field }}  <!-- This renders each form field, including <input> tags -->
+                        <!-- Django form fields include their own <input> tags, so you don't need to add an <input> tag yourself. -->
+                        <!-- The 'label' tag for a Django form field renders a <label> with proper 'for' attribute. -->
+                        <!-- This renders the <label> for the form field -->
+                        {% if field.errors %}
+                          <!-- This is where you might render the field's error messages -->
+                          {% for error in field.errors %}
+                            <div class="alert alert-danger">{{ error }}</div>
+                          {% endfor %}
+                        {% endif %}
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example2" class="form-control" />
-                      <label class="form-label" for="form3Example2">Last name</label>
-                    </div>
-                  </div>
+                    {% endfor %}
                 </div>
 
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3" class="form-control" />
-                  <label class="form-label" for="form3Example3">Email address</label>
-                </div>
-
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4" class="form-control" />
-                  <label class="form-label" for="form3Example4">Password</label>
-                </div>
-
-                <!-- Checkbox
-                <div class="form-check d-flex justify-content-center mb-4">
-                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
-                  <label class="form-check-label" for="form2Example33">
-                    Subscribe to my newsletter that I don't have currently.
-                  </label>
-                </div>
-                -->
                 <!-- Submit button -->
-                <button class="btn btn-primary btn-block mb-4">
-                  Sign up
-                </button>
+                <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
               </form>
             </div>
           </div>

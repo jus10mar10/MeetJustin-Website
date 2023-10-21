@@ -3,6 +3,8 @@ from .models import Post
 from django.views import View
 from django.conf import settings
 from django.shortcuts import redirect
+from .forms import UserRegisterForm
+from django.contrib.auth import authenticate, login, logout
 
 def Home(request):
     context = {
@@ -63,10 +65,41 @@ def error_404_view(request, exception):
     return render(request, '404.html')
 
 def signup(request):
-    return render(request, 'signup.html')
+    if request.method == 'POST':  # Form was submitted
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()  # This will create the user
+            # Redirect to a success page.
+            return redirect('/')  # replace 'some-success-url' with an actual URL pattern name
+    else:
+        form = UserRegisterForm()  # An unbound form, for GET request
+
+    return render(request, 'signup.html', {'form': form})
+
+# views.py
+from django.shortcuts import render, redirect
+from .forms import UserRegisterForm
+from django.contrib import messages
+
 
 def signin(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+            return redirect('/')  # Redirect to the desired page after login
+        else:
+            # Invalid login credentials
+            messages.error(request, 'Invalid username or password.')
+
     return render(request, 'signin.html')
+
+def user_logout(request):
+    logout(request)
+    return redirect('/')  # You can redirect to any named URL pattern
 
 def account(request):
     return render(request, 'coming_soon.html')
