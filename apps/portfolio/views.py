@@ -61,3 +61,15 @@ def search_view(request):
 
 def error_404_view(request, exception):
     return render(request, '404.html')
+
+def signup(request):
+    return render(request, 'signup.html')
+
+def signin(request):
+    return render(request, 'signin.html')
+
+def account(request):
+    return render(request, 'coming_soon.html')
+
+def resources(request):
+    return render(request, 'coming_soon.html')
