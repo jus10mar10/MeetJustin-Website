@@ -20,3 +20,9 @@ def account(request):
         'avatars': avatars,
     }
     return render(request, 'account.html', context)  # Replace 'your_template_name.html' with the appropriate template name.
+
+@login_required
+def delete_account(request):
+    user = request.user
+    user.delete()
+    return redirect('/')
