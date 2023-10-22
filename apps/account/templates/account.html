@@ -71,12 +71,16 @@
             <div class="card-body">
               <h1>Change Avatar</h1>
               <div class="row">
-                    {% for avatar in avatars %}
-                    <div class="col-3 col-sm-3">
-                        <img src="{{avatar.image.url}}" class= "img-fluid my-2 me-2 avatar-select" style="border-radius: 50%;" alt="avatar"></image>
-                        <button type="button" class="btn btn-primary mobile-only">Select</button>
-                    </div>
-                    {% endfor %}
+                {% for avatar in avatars %}
+                <div class="col-3 col-sm-3">
+                    <form method="post">
+                        {% csrf_token %}
+                        <img src="{{ avatar.image.url }}" class="img-fluid my-2 me-2 avatar-select" style="border-radius: 50%;" alt="avatar"></image>
+                        <input type="hidden" name="selected_avatar" value="{{ avatar.pk }}">
+                            <button type="submit" class="btn btn-primary mobile-only">Select</button>
+                    </form>
+                </div>
+                {% endfor %}
               </div>
             </div>
           </div>
@@ -89,6 +93,33 @@
   </section>
 
 {% endif %}
+
+{% block script %}
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const avatarImages = document.querySelectorAll(".avatar-select");
+
+    if (!avatarImages.length) {
+        console.warn("No avatars found!"); // This will print a warning if no avatars are found.
+        return;
+    }
+
+    avatarImages.forEach(img => {
+        img.addEventListener("click", function(event) {
+            if(!window.matchMedia("(max-width: 768px)").matches) { 
+                const submitButton = this.parentElement.querySelector('button[type="submit"]');
+                if (submitButton) {
+                    submitButton.click();
+                } else {
+                    console.warn("Submit button not found!"); // This will print a warning if the submit button is not found.
+                }
+            }
+        });
+    });
+});
+  </script>
+
+{% endblock %}
 
 {% endblock %}
 

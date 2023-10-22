@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Avatar
 from django.utils.safestring import mark_safe
-from .models import UserProfile
+from .models import UserProfile, Avatar
 
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'selected_avatar_display')
