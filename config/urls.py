@@ -24,6 +24,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("apps.portfolio.urls")),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path("", include('apps.account.urls')),
 ]
 
 handler404 = 'apps.portfolio.views.error_404_view'

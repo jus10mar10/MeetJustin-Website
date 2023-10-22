@@ -13,10 +13,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 from decouple import config
+import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -32,6 +31,8 @@ ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = ['https://localhost:8000']
 
 # Application definition
+# Add the apps directory to the Python path
+sys.path.append(os.path.join(os.path.dirname(__file__), 'apps'))
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "apps.portfolio",
+    "apps.account",
     'ckeditor',
     'ckeditor_uploader',
     'django_cleanup.apps.CleanupConfig',
@@ -61,7 +63,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'templates'),],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -69,6 +71,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "apps.account.context_processors.avatar_context",
             ],
         },
     },
@@ -177,3 +180,8 @@ CKEDITOR_IMAGE_QUALITY = 75  # Set between 1 and 95
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+
+TEMPLATE_DIRS = [
+    os.path.join(PROJECT_PATH, 'templates/'),
+]

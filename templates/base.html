@@ -33,7 +33,6 @@
               <a class="nav-link {% if request.path == '/Home' %}active{% endif %}{% if request.path == '/' %}active{% endif %}" href="/Home">Home</a>
               <a class="nav-link {% if request.path == '/Portfolio/' %}active{% endif %}" href="/Portfolio/">Portfolio</a>
               <a class="nav-link {% if request.path == '/Blog/' %}active{% endif %}" href="/Blog/">Blog</a>
-              <a class="nav-link {% if request.path == '/Contact/' %}active{% endif %}" href="/resources/">Resources</a>
             </div>
             {% if not user.is_authenticated %}
               <!-- Show these links if the user is NOT signed in -->
@@ -41,8 +40,12 @@
               <a class="btn btn-outline-success me-2 my-1 nav-link {% if request.path == '/Home/' %}active{% endif %} text-success" href="/signin/">Sign in</a>
             {% else %}
               <!-- Show these links if the user IS signed in -->
-              <a class="btn btn-outline-danger me-2 my-1 nav-link {% if request.path == '/Home/' %}active{% endif %} text-danger" href="/logout/">Sign out</a>
-              <a class="btn btn-outline-success me-2 my-1 nav-link {% if request.path == '/Home/' %}active{% endif %} text-success" href="/account/">{{ user.username }}</a>
+              <a class="me-2 my-1 nav-link {% if request.path == '/Home/' %}active{% endif %} text-danger" href="/logout/">Sign out</a>
+              <a class="me-2 my-1 nav-link {% if request.path == '/Home/' %}active{% endif %} text-dark" href="/account/">{{ user.username }}
+                {% if avatar_url %}
+                <img src="{{ avatar_url }}" class="rounded-circle" style="width: 40px; height: 40px; margin-right: 10px;"/>
+              {% endif %}
+              </a>
               <!-- Show these links if the user IS staff or superuser-->
               {% if user.is_staff or user.is_superuser %}
                 <a type="button" class="btn btn-secondary text-white me-2 my-2 nav-link {% if request.path == '/Home/' %}active{% endif %} " href="/admin/">Admin</a>

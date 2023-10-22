@@ -101,8 +101,5 @@ def user_logout(request):
     logout(request)
     return redirect('/')  # You can redirect to any named URL pattern
 
-def account(request):
-    return render(request, 'coming_soon.html')
-
 def resources(request):
     return render(request, 'coming_soon.html')
