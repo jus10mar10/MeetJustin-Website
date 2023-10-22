@@ -16,7 +16,4 @@ class Avatar(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    if Avatar.objects.filter(name='default').exists():
-        selected_avatar = models.ForeignKey(Avatar, null=True, blank=True, on_delete=models.SET_NULL, default=Avatar.objects.get(name='default').id)
-    else:
-        selected_avatar = models.ForeignKey(Avatar, null=True, blank=True, on_delete=models.SET_NULL)
+    selected_avatar = models.ForeignKey(Avatar, null=True, blank=True, on_delete=models.SET_NULL)

@@ -5,6 +5,8 @@ from django.conf import settings
 from django.shortcuts import redirect
 from .forms import UserRegisterForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from apps.account.models import UserProfile, Avatar
 
 def Home(request):
     context = {
@@ -70,7 +72,13 @@ def signup(request):
         if form.is_valid():
             form.save()  # This will create the user
             # Redirect to a success page.
-            return redirect('/')  # replace 'some-success-url' with an actual URL pattern name
+            avatar = Avatar.objects.get(name='default')
+            user = User.objects.get(username=form.cleaned_data['username'])
+            user_profile = UserProfile.objects.create(user=user)
+            user_profile.selected_avatar = avatar
+            user_profile.save()
+            return redirect('/signin/')  # replace 'some-success-url' with an actual URL pattern name
+            
     else:
         form = UserRegisterForm()  # An unbound form, for GET request
 
