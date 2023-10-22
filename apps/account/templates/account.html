@@ -56,13 +56,15 @@
               <p class="text-muted mb-1"></p>
               <p class="text-muted mb-4"></p>
               <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-danger">DELETE ACCOUNT</button>
+                <button type="button" class="btn btn-danger">Delete Account</button>
+                <button type="button" class="btn btn-primary ms-2">Change Password</button>
               </div>
             </div>
           </div>
           <div class="card mb-4 mb-lg-0">
-            <div class="card-body p-0">
-              
+            <div class="card-body" style="display: none;">
+              <h3>Sure you want to do that?</h1>
+                <button type="button"class="btn btn-danger">Yes</button>
             </div>
           </div>
         </div>
@@ -85,8 +87,11 @@
             </div>
           </div>
               </div>
+              
             </div>
+            
           </div>
+          
         </div>
       </div>
     </div>
@@ -117,7 +122,6 @@
         });
     });
 });
-  </script>
 
 {% endblock %}
 
