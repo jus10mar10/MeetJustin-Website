@@ -11,7 +11,7 @@ from apps.account.models import UserProfile, Avatar
 def Home(request):
     context = {
         'texts': ["Data Enthusiast",
-                  "Python Programmer",
+                  "Python",
                   "Chattanoogan",
                   "Finance Fanatic",
                   "Django Developer",
