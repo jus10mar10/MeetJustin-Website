@@ -75,12 +75,15 @@
               <div class="row">
                 {% for avatar in avatars %}
                 <div class="col-3 col-sm-3">
-                    <form method="post">
-                        {% csrf_token %}
-                        <img src="{{ avatar.image.url }}" class="img-fluid my-2 me-2 avatar-select" style="border-radius: 50%;" alt="avatar"></image>
+                  <form method="post">
+                    {% csrf_token %}
+                    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;"> <!-- Flex container -->
+                        <img src="{{ avatar.image.url }}" class="img-fluid my-2 me-2 avatar-select" style="border-radius: 50%;" alt="avatar">
                         <input type="hidden" name="selected_avatar" value="{{ avatar.pk }}">
-                            <button type="submit" class="btn btn-primary mobile-only">Select</button>
-                    </form>
+                        <button type="submit" class="btn">Select</button>
+                    </div>
+                </form>
+                
                 </div>
                 {% endfor %}
               </div>
