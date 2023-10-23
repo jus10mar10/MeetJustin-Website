@@ -17,6 +17,11 @@
         top: 0;
         z-index: 1000;  /* Optional: but helpful if you have other sticky/fixed elements */
       }
+      @media (max-width: 768px) {
+    .mobile-card {
+      width: 400px;
+    }
+    }
 
       {% block style %}{% endblock %}
     </style>
