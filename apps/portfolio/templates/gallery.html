@@ -43,13 +43,13 @@
     </div>
   </section>
   
-  <div class="album py-5 bg-light">
+  <div class="album py-5 background">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         {% for post in posts %}
         <div class="col">
-          <div class="card shadow-sm" style="height: 400px;">
-            <div class="card-image" style="background-image: url({{post.image.url}});"></div>
+          <div class="card shadow-sm border" style="height: 400px;">
+            <div class="card-image border rounded" style="background-image: url({{post.image.url}});"></div>
             <div class="card-body">
               <p class="card-text"><strong>{{ post.title }}</strong></p>
               <p class="card-text" style="height: 80px; overflow: auto;">{{ post.description|truncatechars:145 }}</p>

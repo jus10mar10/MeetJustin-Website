@@ -35,55 +35,57 @@
 {% endblock %}
 
 {% block content %}
-<div class="position-relative text-center">
-    <div class="position-relative text-center bg-primary py-5">
-        <h1 class="display-1 text-white" style="line-height: 8;">
-            <span id="animText"></span>
-        </h1>
-        <a href="#about-me">
-        <div class="arrow-container">
-            <i class="fas fa-arrow-down text-white"></i>
-        </div>  
-        </a>
-    </div>
-</div>
-
-<div class="container py-5">
-    <div class="row align-items-center">
-        
-        <div class="col-md-4 text-center mb-4 mb-md-0">
-            <img src="https://media.licdn.com/dms/image/D4E03AQE4-7Nr5yNmjA/profile-displayphoto-shrink_400_400/0/1693420288525?e=1698883200&v=beta&t=9eS5fzg5bB1I_GUF4RlG9ix0n94mt4TXssX_pCEBmXs" class="profile-image img-fluid rounded-circle mb-3" alt="profile picture">
-        </div>
-        
-         
-        <div class="col-md-8">
-            <h2 class="mb-3" id="about-me">Meet Justin Martin</h2>
-            <p class="mb-4">
-                Hello! I'm a dedicated data enthusiast with a background in Python, SQL, Finance, Excel, and more.
-                My academic journey began at The University of Tennessee: Chattanooga, where I earned an undergraduate degree in Finance.
-                Now, I'm advancing my data science expertise at Georgia Tech through the Online Master of Science in Analytics (OMSA) program.
-                I believe in making data-driven decisions, and solving problems.
-                This website functions as both a portfolio and helpful resource for others on their tech journey. If any questions arise or you'd simply like to connect, please don't hesitate to reach out!
-            </p>
-            <p>
-                Check out the site code on my Github or read the portfolio write up 
-                <a href="/post/1/" class="text-primary">here</a>
-            </p>
-            <strong>Don't mind the mess. This site is in active development!🚧</strong>
-            <div class="col-md-4 mb-4 mb-md-0">
-                <a href="https://docs.google.com/document/d/1aVNLMP1q_33hvfSEAwVtlcm2SFXmWAdA/edit?usp=sharing&ouid=105122479401115031590&rtpof=true&sd=true"><strong>Current Resume</strong></a>
-                <a class="btn text-white btn-floating m-1"
-                   href="https://docs.google.com/document/d/1aVNLMP1q_33hvfSEAwVtlcm2SFXmWAdA/edit?usp=sharing&ouid=105122479401115031590&rtpof=true&sd=true"
-                   role="button">
-                    <i class="fa-regular fa-file fa-2xl" style="color: #000000;"></i>
+    <section class="bg-dark">
+        <div class="position-relative text-center">
+            <div class="position-relative text-center bg-primary-light py-5">
+                <h1 class="display-1 text-white" style="line-height: 8;">
+                    <span id="animText"></span>
+                </h1>
+                <a href="#about-me">
+                <div class="arrow-container">
+                    <i class="fas fa-arrow-down text-white"></i>
+                </div>  
                 </a>
             </div>
         </div>
 
-        
+        <div class="container py-5 bg-dark">
+            <div class="row align-items-center">
+                
+                <div class="col-md-4 text-center mb-4 mb-md-0">
+                    <img src="https://media.licdn.com/dms/image/D4E03AQE4-7Nr5yNmjA/profile-displayphoto-shrink_400_400/0/1693420288525?e=1698883200&v=beta&t=9eS5fzg5bB1I_GUF4RlG9ix0n94mt4TXssX_pCEBmXs" class="profile-image img-fluid rounded-circle mb-3" alt="profile picture">
+                </div>
+                
+                
+                <div class="col-md-8">
+                    <h2 class="mb-3" id="about-me">Meet Justin Martin</h2>
+                    <p class="mb-4">
+                        Hello! I'm a dedicated data enthusiast with a background in Python, SQL, Finance, Excel, and more.
+                        My academic journey began at The University of Tennessee: Chattanooga, where I earned an undergraduate degree in Finance.
+                        Now, I'm advancing my data science expertise at Georgia Tech through the Online Master of Science in Analytics (OMSA) program.
+                        I believe in making data-driven decisions, and solving problems.
+                        This website functions as both a portfolio and helpful resource for others on their tech journey. If any questions arise or you'd simply like to connect, please don't hesitate to reach out!
+                    </p>
+                    <p>
+                        Check out the site code on my Github or read the portfolio write up 
+                        <a href="/post/1/" class="text-primary">here</a>
+                    </p>
+                    <strong>Don't mind the mess. This site is in active development!🚧</strong>
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <a href="https://docs.google.com/document/d/1aVNLMP1q_33hvfSEAwVtlcm2SFXmWAdA/edit?usp=sharing&ouid=105122479401115031590&rtpof=true&sd=true"><strong>Current Resume</strong></a>
+                        <a class="btn text-white btn-floating m-1"
+                        href="https://docs.google.com/document/d/1aVNLMP1q_33hvfSEAwVtlcm2SFXmWAdA/edit?usp=sharing&ouid=105122479401115031590&rtpof=true&sd=true"
+                        role="button">
+                            <i class="fa-regular fa-file fa-2xl" style="color: #000000;"></i>
+                        </a>
+                    </div>
+                </div>
 
-    </div>
-</div> 
+                
+
+            </div>
+            </div> 
+    </section>
 {% endblock %}
 
 {% block script %}
