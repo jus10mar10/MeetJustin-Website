@@ -56,7 +56,7 @@
               </a>
               <!-- Show these links if the user IS staff or superuser-->
               {% if user.is_staff or user.is_superuser %}
-                <a type="button" class="btn btn-secondary text-white me-2 my-4 nav-link {% if request.path == '/Home/' %}active{% endif %} " href="/admin/">Admin</a>
+                <a type="button" class="btn btn-secondary text-white me-4 my-3 nav-link {% if request.path == '/Home/' %}active{% endif %} " href="/admin/">Admin</a>
               {% endif %}
               
             {% endif %}
