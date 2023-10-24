@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Contact
+from .models import Post, Contact, ContentManager
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'type', 'is_published', 'date')
@@ -14,5 +14,8 @@ class ContactAdmin(admin.ModelAdmin):
     search_fields = ('name', 'email', 'message',)
     list_per_page = 25
 
+
 admin.site.register(Post, PostAdmin)
 admin.site.register(Contact, ContactAdmin)
+
+admin.site.register(ContentManager)

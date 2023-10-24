@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from apps.account.models import UserProfile, Avatar
 from django.http import HttpResponseRedirect
-from .models import Contact
+from .models import Contact, ContentManager
 import os
 from decouple import config
 
@@ -29,6 +29,12 @@ def Home(request):
         "Excel Expert",
         "Tableau User",
     ]
+    try :
+        profile_image = ContentManager.objects.get()
+        resume_link = ContentManager.objects.get()
+    except:
+        profile_image = None
+        resume_link = None
 
     current_page = 'Home'
     form = ContactForm(request.POST or None)  # instance for form
@@ -47,7 +53,9 @@ def Home(request):
         'texts': texts,
         'current_page': current_page,
         'form': form,  # Don't forget to pass the form as context
-        'RECAPTCHA_PUBLIC_KEY': RECAPTCHA_PUBLIC_KEY  # Directly from settings
+        'RECAPTCHA_PUBLIC_KEY': RECAPTCHA_PUBLIC_KEY,  # Directly from settings
+        'profile_image': profile_image,
+        'resume_link': resume_link,
     }
 
     return render(request, 'home.html', context)

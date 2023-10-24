@@ -29,3 +29,11 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
+    
+class ContentManager(models.Model):
+    resume_link = models.CharField(max_length=100, null=False)
+    profile_image = models.ImageField(upload_to='profile/')
+
+    class Meta:
+        verbose_name_plural = "Content Manager"
+        
