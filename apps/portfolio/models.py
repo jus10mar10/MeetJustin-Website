@@ -36,4 +36,3 @@ class ContentManager(models.Model):
 
     class Meta:
         verbose_name_plural = "Content Manager"
-        
