@@ -9,35 +9,48 @@ from django.contrib.auth.models import User
 from apps.account.models import UserProfile, Avatar
 from django.http import HttpResponseRedirect
 from .models import Contact
+import os
+from decouple import config
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+RECAPTCHA_PUBLIC_KEY = config('RECAPTCHA_PUBLIC_KEY')
 
 def Home(request):
-    context = {
-        'texts': ["Data Enthusiast",
-                  "Python",
-                  "Chattanoogan",
-                  "Finance Fanatic",
-                  "Django Developer",
-                  "SQL",
-                  "HTML and CSS",
-                  "Excel Expert",
-                  "Tableau User",]
-    }
+    # Your predefined texts
+    texts = [
+        "Data Enthusiast",
+        "Python",
+        "Chattanoogan",
+        "Finance Fanatic",
+        "Django Developer",
+        "SQL",
+        "HTML and CSS",
+        "Excel Expert",
+        "Tableau User",
+    ]
+
     current_page = 'Home'
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data.get('name')
-            email = form.cleaned_data.get('email')
-            message = form.cleaned_data.get('message')
+    form = ContactForm(request.POST or None)  # instance for form
 
-            # Create Contact instance
-            contact = Contact(name=name, email=email, message=message)
-            contact.save()
+    # Check if form was submitted and valid
+    if request.method == 'POST' and form.is_valid():
+        # Save the contact without directly using the form data
+        contact = form.save(commit=False)
+        contact.save()
 
-            # Redirect to the same page or a 'thank you' page after successful submission
-            return redirect('/')  # Use your own URL name or path for redirection
+        # Redirect to the same page or a 'thank you' page after successful submission
+        return redirect('/')  # Use your own URL name or path for redirection
 
-    return render(request, 'home.html', {"texts":context["texts"], "current_page":current_page})
+    # Common context for rendering
+    context = {
+        'texts': texts,
+        'current_page': current_page,
+        'form': form,  # Don't forget to pass the form as context
+        'RECAPTCHA_PUBLIC_KEY': RECAPTCHA_PUBLIC_KEY  # Directly from settings
+    }
+
+    return render(request, 'home.html', context)
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
