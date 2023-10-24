@@ -3,10 +3,12 @@ from .models import Post
 from django.views import View
 from django.conf import settings
 from django.shortcuts import redirect
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, ContactForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from apps.account.models import UserProfile, Avatar
+from django.http import HttpResponseRedirect
+from .models import Contact
 
 def Home(request):
     context = {
@@ -21,6 +23,20 @@ def Home(request):
                   "Tableau User",]
     }
     current_page = 'Home'
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data.get('name')
+            email = form.cleaned_data.get('email')
+            message = form.cleaned_data.get('message')
+
+            # Create Contact instance
+            contact = Contact(name=name, email=email, message=message)
+            contact.save()
+
+            # Redirect to the same page or a 'thank you' page after successful submission
+            return redirect('/')  # Use your own URL name or path for redirection
+
     return render(request, 'home.html', {"texts":context["texts"], "current_page":current_page})
 
 def post_detail(request, post_id):

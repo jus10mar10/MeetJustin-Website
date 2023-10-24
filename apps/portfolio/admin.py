@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Contact
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'type', 'is_published', 'date')
@@ -8,4 +8,11 @@ class PostAdmin(admin.ModelAdmin):
     list_editable = ('is_published',)
     list_per_page = 25  # Show 25 records per page
 
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'date')
+    list_filter = ('date',)
+    search_fields = ('name', 'email', 'message',)
+    list_per_page = 25
+
 admin.site.register(Post, PostAdmin)
+admin.site.register(Contact, ContactAdmin)

@@ -70,14 +70,13 @@
       </nav>
 
     {% block content %}{% endblock %}
-
-<footer class="footer mt-auto text-center text-white" style="background-color: black;">
-  <div class="container">
-    <!-- Section: Social media -->
-    <section class="mb-4" style="padding-top: 2%;">
-
-      <!-- Linkedin -->
-      <a
+<footer class="text-center bg-dark" style="background: var(--bs-emphasis-color);">
+  <div class="container-fluid text-center text-white py-4 py-lg-5 rounded-top" style="background: var(--bs-emphasis-color);">
+      <ul class="list-inline">
+          <li class="list-inline-item"><a class="link-light" href="/account/"></a></li>
+      </ul>
+      <ul class="list-inline">
+        <a
         class="btn text-white btn-floating m-1"
         style="background-color: #0082ca;"
         href="https://www.linkedin.com/in/justin-martin-40a680140"
@@ -100,16 +99,9 @@
         role="button"
         ><i class="fa-brands fa-youtube"></i>
       </a>
-    </section>
-    <!-- Section: Social media -->
+      </ul>
+      <p class="text-muted mb-0">Copyright © 2023 Justin Martin</p>
   </div>
-  <!-- Grid container -->
-
-  <!-- Copyright -->
-  <div class="text-center p-3 bg-dark">
-    Powered by 🐍
-  </div>
-  <!-- Copyright -->
 </footer>
       {% block script %}{% endblock %}
 </body>

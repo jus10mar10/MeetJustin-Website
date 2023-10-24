@@ -2,6 +2,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .models import Contact
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()  # Adding an email field
@@ -12,3 +13,8 @@ class UserRegisterForm(UserCreationForm):
         model = User
         fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
         # Note: 'password1' and 'password2' are the fields provided by UserCreationForm for the password and password confirmation.
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['name', 'email', 'message']
